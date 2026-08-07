@@ -11,6 +11,7 @@ CREATE DATABASE inventory_db;
 USE inventory_db;
 
 -- CREATE CATEGORIES TABLE
+
 CREATE TABLE categories (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
     category_name VARCHAR(100) NOT NULL UNIQUE,
@@ -19,6 +20,7 @@ CREATE TABLE categories (
 );
 
 -- CREATE PRODUCTS TABLE
+
 CREATE TABLE products (
     product_id INT AUTO_INCREMENT PRIMARY KEY,
     product_name VARCHAR(150) NOT NULL,
@@ -39,6 +41,7 @@ CREATE TABLE products (
             
 -- INSERT (CREATE)
 -- Insert Categories
+
 INSERT INTO categories (category_name, description)
 VALUES
 ('Electronics', 'Gadgets, devices, and electronic accessories'),
@@ -47,6 +50,7 @@ VALUES
 ('Apparel', 'Clothing, footwear, and accessories');
 
 -- Insert Products
+
 INSERT INTO products (product_name, category_id, price, stock_quantity)
 VALUES
 ('Noise Cancelling Headphones', 1, 59.99, 120),
@@ -59,12 +63,14 @@ VALUES
 ('Men''s Cotton Polo T-Shirt', 4, 19.99, 150);
 
 -- Display Records
+
 SELECT * FROM categories;
 SELECT * FROM products;
 
 -- UPDATE (MODIFY DATA)
 
 -- Update Product ID = 1
+
 UPDATE products
 SET
     price = 54.99,
@@ -72,25 +78,30 @@ SET
 WHERE product_id = 1;
 
 -- Increase price by 10% for Electronics products
+
 UPDATE products
 SET price = price * 1.10
 WHERE category_id = 1;
 
 -- View Updated Records
+
 SELECT * FROM products;
 
 -- DELETE (REMOVE DATA)
 
 -- Delete Product ID = 8
+
 DELETE FROM products
 WHERE product_id = 8;
 
 -- Delete Category ID = 4
 -- Related products will also be deleted because of ON DELETE CASCADE
+
 DELETE FROM categories
 WHERE category_id = 4;
 
 -- View Remaining Records
+
 SELECT * FROM categories;
 SELECT * FROM products;
  

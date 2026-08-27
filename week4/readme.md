@@ -1,76 +1,52 @@
--- =============================================
 -- TASK 4: ORDER MANAGEMENT SYSTEM - COMPLETE
--- =============================================
 
--- 1. CREATE DATABASE
+--  CREATE DATABASE
 CREATE DATABASE IF NOT EXISTS ecoms_db;
 
--- 2. SELECT DATABASE
+--  SELECT DATABASE
 USE ecoms_db;
 
--- 3. DROP OLD TABLES (in correct order)
+--  DROP OLD TABLES (in correct order)
 DROP TABLE IF EXISTS Order_Details;
 DROP TABLE IF EXISTS Orders;
 DROP TABLE IF EXISTS Product;
 DROP TABLE IF EXISTS Customer;
 
--- =============================================
--- 4. CREATE CUSTOMER TABLE (MISSING)
--- =============================================
-<img width="681" height="159" alt="image" src="https://github.com/user-attachments/assets/9000544d-4b5b-450c-a6a1-8a06bb315626" />
-
--- =============================================
--- 5. CREATE PRODUCT TABLE (MISSING)
--- =============================================
-<img width="614" height="187" alt="image" src="https://github.com/user-attachments/assets/320753fe-7564-437f-a44a-961acb1add5a" />
--- =============================================
--- CREATE ORDERS TABLE
--- =============================================
-<img width="615" height="161" alt="image" src="https://github.com/user-attachments/assets/461fd6bc-eaf2-496a-9077-5660830bedc8" />
-);
--- =============================================
--- 7. CREATE ORDER_DETAILS TABLE
--- =============================================
-<img width="552" height="190" alt="image" src="https://github.com/user-attachments/assets/391973de-e86f-40aa-a0c0-d6743d5573fc" />
-
--- =============================================
--- 8. INSERT DATA
--- =============================================
+--  INSERT DATA
 
 -- Insert Customers
-<img width="681" height="159" alt="image" src="https://github.com/user-attachments/assets/9000544d-4b5b-450c-a6a1-8a06bb315626" />
+<img width="688" height="190" alt="image" src="https://github.com/user-attachments/assets/9139b459-195e-422e-ac02-158d5f8b1471" />
+
 -- Insert Products
-<img width="614" height="187" alt="image" src="https://github.com/user-attachments/assets/320753fe-7564-437f-a44a-961acb1add5a" />
+<img width="613" height="180" alt="image" src="https://github.com/user-attachments/assets/cacc3469-a675-4720-803a-f37b677ab28d" />
 
 -- Insert Orders
 INSERT INTO Orders (Customer_ID, Order_Date, Total_Amount, Order_Status) VALUES
-<img width="1036" height="174" alt="image" src="https://github.com/user-attachments/assets/0da3533e-74b8-4edc-917c-1f3e17ef4c51" />
-
+<img width="610" height="149" alt="image" src="https://github.com/user-attachments/assets/dc267c4c-4420-4f02-b9a8-28993f7e5fb2" />
 
 -- Insert Order Details
 INSERT INTO Order_Details (Order_ID, Product_ID, Quantity, Price) VALUES
-<img width="415" height="159" alt="image" src="https://github.com/user-attachments/assets/5ab21714-af0d-4d37-9f19-851e96554b6f" />
+<img width="556" height="188" alt="image" src="https://github.com/user-attachments/assets/526eb2ce-e534-4846-9ae9-b25159fc9a40" />
 
-
--- =============================================
--- 9. VIEW ALL DATA
--- =============================================
+-- VIEW ALL DATA
 
 SELECT '=== CUSTOMERS ===' AS '';
 SELECT * FROM Customer;
+<img width="556" height="188" alt="image" src="https://github.com/user-attachments/assets/3f2251dd-a76d-4350-bd2c-78bcfafdf811" />
 
 SELECT '=== PRODUCTS ===' AS '';
 SELECT * FROM Product;
 
+
 SELECT '=== ORDERS ===' AS '';
 SELECT * FROM Orders;
+<img width="1050" height="169" alt="image" src="https://github.com/user-attachments/assets/3be4b7b0-3537-4db4-8e02-616b2a6b74e3" />
 
 SELECT '=== ORDER DETAILS ===' AS '';
 SELECT * FROM Order_Details;
+<img width="491" height="177" alt="image" src="https://github.com/user-attachments/assets/19a67337-c265-4792-91d2-519040fd9d53" />
 
--- =============================================
--- 10. MODIFY ORDER
--- =============================================
+-- MODIFY ORDER
 
 UPDATE Orders
 SET Order_Status = 'Shipped'
@@ -80,9 +56,7 @@ UPDATE Orders
 SET Total_Amount = 1600.00
 WHERE Order_ID = 1;
 
--- =============================================
--- 11. CUSTOMER ORDER HISTORY
--- =============================================
+-- CUSTOMER ORDER HISTORY
 
 SELECT
     o.Order_ID,
@@ -100,9 +74,8 @@ JOIN Order_Details od ON o.Order_ID = od.Order_ID
 JOIN Product p ON od.Product_ID = p.Product_ID
 ORDER BY o.Customer_ID, o.Order_Date;
 
--- =============================================
--- 12. CUSTOMER-WISE ORDER SUMMARY
--- =============================================
+
+-- CUSTOMER-WISE ORDER SUMMARY
 
 SELECT
     Customer_ID,
@@ -112,9 +85,7 @@ FROM Orders
 GROUP BY Customer_ID
 ORDER BY Total_Spent DESC;
 
--- =============================================
--- 13. ORDER STATUS REPORT
--- =============================================
+-- ORDER STATUS REPORT
 
 SELECT
     Order_Status,
@@ -122,17 +93,18 @@ SELECT
     SUM(Total_Amount) AS Total_Amount
 FROM Orders
 GROUP BY Order_Status;
+<img width="420" height="151" alt="image" src="https://github.com/user-attachments/assets/0d003e0f-3475-494b-a75c-2e81cd317d04" />
 
--- =============================================
--- 14. DELETE ORDER
--- =============================================
+
+
+-- DELETE ORDER
 
 DELETE FROM Orders
 WHERE Order_ID = 4;
+<img width="1043" height="154" alt="image" src="https://github.com/user-attachments/assets/1aea2b31-ece2-471a-a868-c9a784a8dcf0" />
 
--- =============================================
--- 15. FINAL ORDER REPORT (After Delete)
--- =============================================
+
+-- FINAL ORDER REPORT (After Delete)
 
 SELECT
     o.Order_ID,
@@ -150,9 +122,7 @@ JOIN Order_Details od ON o.Order_ID = od.Order_ID
 JOIN Product p ON od.Product_ID = p.Product_ID
 ORDER BY o.Order_ID;
 
--- =============================================
--- 16. ADDITIONAL REPORTS
--- =============================================
+-- ADDITIONAL REPORTS
 
 -- Report: Orders by Customer
 SELECT '=== ORDERS BY CUSTOMER ===' AS '';

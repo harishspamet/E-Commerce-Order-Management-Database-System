@@ -76,3 +76,31 @@ WHERE review_id = 6;
 
 -- Display all reviews
 SELECT * FROM reviews;
+
+-- Report 1 – Product Rating Analysis
+SELECT
+    p.product_name,
+    COUNT(r.review_id) AS total_reviews,
+    ROUND(AVG(r.rating), 2) AS average_rating
+FROM Product p
+JOIN reviews r
+    ON p.product_id = r.product_id
+GROUP BY p.product_id, p.product_name;
+
+-- Report 2 – Highly Rated Products
+SELECT
+    p.product_name,
+    ROUND(AVG(r.rating), 2) AS average_rating
+FROM Product p
+JOIN reviews r
+    ON p.product_id = r.product_id
+GROUP BY p.product_id, p.product_name
+HAVING AVG(r.rating) > 4;
+
+-- Report 3 – Rating Distribution
+SELECT
+    rating,
+    COUNT(review_id) AS number_of_reviews
+FROM reviews
+GROUP BY rating
+ORDER BY rating DESC;

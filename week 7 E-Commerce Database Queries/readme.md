@@ -53,6 +53,8 @@ SELECT * FROM payment;
 
 
 -- REPORT 4:
+
+
 -- Report 1: Product Availability Report
 
 <img width="633" height="390" alt="image" src="https://github.com/user-attachments/assets/12321ce5-902b-4810-9033-574d4c965bdb" />

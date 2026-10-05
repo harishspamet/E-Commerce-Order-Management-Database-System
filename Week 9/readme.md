@@ -1,7 +1,9 @@
 -- WEEK 9: SALES AND CUSTOMER ANALYTICS SYSTEM
 
   -- Name :Harish SP
+  
   -- Roll NO: ASML25005
+  
 -- Database: ecoms_db
 
 USE ecoms_db;

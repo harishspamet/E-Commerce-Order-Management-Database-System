@@ -45,26 +45,18 @@ WHERE p.Price = (
 # 3. Customer Analysis
 
 ### 3.1 Highest Spending Customer
-SELECT Customer_ID, SUM(Total_Amount) AS Total_Spent
-FROM Orders
-GROUP BY Customer_ID
-ORDER BY Total_Spent DESC
-LIMIT 1;
+
+<img width="326" height="87" alt="image" src="https://github.com/user-attachments/assets/ac94ba96-2805-4d9d-bc4c-731f0f182a54" />
+
 
 ### 3.2 Customers with Maximum Orders
-SELECT Customer_ID, COUNT(Order_ID) AS Total_Orders
-FROM Orders
-GROUP BY Customer_ID
-ORDER BY Total_Orders DESC
-LIMIT 1;
+
+<img width="337" height="88" alt="image" src="https://github.com/user-attachments/assets/27241b80-5fe4-4d8d-b716-0dbfdb2bfa1e" />
 
 ### 3.3 Top 5 Customers
-SELECT c.Customer_Name, SUM(o.Total_Amount) AS Total_Spending
-FROM Customer c
-JOIN Orders o ON c.Customer_ID = o.Customer_ID
-GROUP BY c.Customer_ID, c.Customer_Name
-ORDER BY Total_Spending DESC
-LIMIT 5;
+
+<img width="325" height="147" alt="image" src="https://github.com/user-attachments/assets/ea23cfd8-686b-4a7b-af97-fb32b63fc4d0" />
+
 
 
 # 4. Complex Business Queries
@@ -80,18 +72,9 @@ ORDER BY Quantity_Sold DESC
 LIMIT 1;
 
 ### 4.2 High-Value Customers
-SELECT c.Customer_Name, SUM(o.Total_Amount) AS Total_Spent
-FROM Customer c
-JOIN Orders o ON c.Customer_ID = o.Customer_ID
-GROUP BY c.Customer_ID, c.Customer_Name
-HAVING SUM(o.Total_Amount) > (
-    SELECT AVG(Total)
-    FROM (
-        SELECT SUM(Total_Amount) AS Total
-        FROM Orders
-        GROUP BY Customer_ID
-    ) AS T
-);
+
+<img width="324" height="90" alt="image" src="https://github.com/user-attachments/assets/b306fe5d-611e-4e0f-b6e0-f0f28e2a3f53" />
+
 
 ### 4.3 Category Revenue
 SELECT c.Category_Name,
@@ -112,29 +95,17 @@ JOIN Category c ON p.Category_ID = c.Category_ID
 WHERE p.Price > (SELECT AVG(Price) FROM Products);
 
 ### 5.2 Customer Value Report
-SELECT c.Customer_Name,
-       COUNT(o.Order_ID) AS Total_Orders,
-       SUM(o.Total_Amount) AS Total_Spending
-FROM Customer c
-JOIN Orders o ON c.Customer_ID = o.Customer_ID
-GROUP BY c.Customer_ID, c.Customer_Name
-ORDER BY Total_Spending DESC;
+
+<img width="470" height="136" alt="image" src="https://github.com/user-attachments/assets/39679088-aedd-41e2-990d-ffeb1ae41d40" />
 
 ### 5.3 Top 5 Selling Products
-SELECT p.Product_Name,
-       SUM(od.Quantity) AS Quantity_Sold
-FROM Products p
-JOIN Order_Details od ON p.Product_ID = od.Product_ID
-GROUP BY p.Product_ID, p.Product_Name
-ORDER BY Quantity_Sold DESC
-LIMIT 5;
+
+<img width="315" height="68" alt="image" src="https://github.com/user-attachments/assets/14ee10e3-b63e-4a87-b643-4355f8bc5e0f" />
+
 
 ### 5.4 Monthly Revenue
-SELECT DATE_FORMAT(Order_Date, '%Y-%m') AS Month,
-       SUM(Total_Amount) AS Revenue
-FROM Orders
-GROUP BY Month
-ORDER BY Month;
+
+<img width="223" height="80" alt="image" src="https://github.com/user-attachments/assets/ece42508-4911-40ab-bceb-4e4f3337957b" />
 
 ## 🛠️ SQL Concepts Used
 - `SELECT`
